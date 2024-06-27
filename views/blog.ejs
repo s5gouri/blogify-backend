@@ -97,11 +97,14 @@
             class="p-3 mt-4 bg-info border-success bg-opacity-10 border border-info border-start-0 rounded-end"
           >
             <div>
+              <% if (com.user.profileimg) { %>
               <img
-                src="<%= com.user.profileimg %>"
+                src="<%=com.user.profileimg %>"
                 class="rounded-circle"
                 width="50px"
+                alt="..unable to load!!"
               />
+              <% } %>
               <%= com.user.name %>
               <div
                 class="p-3 mt-2 bg-info bg-opacity-10 border border-info rounded"
