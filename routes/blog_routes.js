@@ -55,7 +55,7 @@ rt2.post("/com/:blogid", check_for_user("token"), async (req, res) => {
   const { blog_comment } = req.body;
   await COMMENT.create({
     comment: blog_comment,
-    user: req.user._id,
+    user: req.user.id,
     blog: req.params.blogid,
   });
   res.redirect(`/blog/view/${req.params.blogid}`);
