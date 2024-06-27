@@ -61,11 +61,14 @@
         <pre class="col-12 mt-3 float-start fs-5"><%= blog.body_text %></pre>
       </div>
       <div>
+        <% if (blog.created_by.profileimg) { %>
         <img
           src="<%=blog.created_by.profileimg %>"
           class="rounded-circle"
           width="50px"
+          alt="..unable to load!!"
         />
+        <% } %> 
         <%= blog.created_by.name %>
         <h5>Comments(<%= comments.length %>)</h5>
       </div>
