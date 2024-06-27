@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include("./partials/headers.ejs") %>
+    <title>Document</title>
+    <style>
+        body {
+        width: 100%;
+        height: 100vh;
+        background-image: url("/for designing/homebg2.avif");
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+        background-position: center;
+      }
+      .centre {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        .mr {
+          margin: 5px;
+        }
+      }
+      .a1 {
+        padding-top: 50px;
+      }
+      .a2{
+        font-weight: 500;
+        color: black;
+      }
+      .td {
+        text-decoration: none;
+      }
+      .navbar {
+        background-color: #7ed4d9;
+      }
+      .d-flexa {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+      }
+
+      .blockquote-footera {
+        color: black;
+        padding: 0.5rem;
+        margin: 0;
+        font-size: 0.875rem;
+      }
+    </style>
+  </head>
+  <body>
+    <%- include("./partials/navbar2.ejs") %>
+    <div class="container a1">
+      <div class="row mt-4">
+        <% blogall.forEach((blog) => { %>
+        <div class="col-md-4 mt-3">
+          <div class="card" style="width: 18rem">
+            <% if (blog.cover_img_url !== "nope") { %>
+            <img src="<%= blog.cover_img_url %>" class="card-img-top" />
+            <% } %>
+            <div class="card-body">
+              <h5 class="card-title"><%= blog.title %></h5>
+              <div class="d-flexa justify-content-between align-items-center">
+                <a href="/blog/view/<%= blog._id %>" class="btn btn-primary"
+                  >View blog</a
+                >
+                <figcaption class="blockquote-footera blockquote-footer">
+                  <%= blog.created_by.name %>
+                </figcaption>
+              </div>
+            </div>
+          </div>
+        </div>
+        <% }) %>
+      </div>
+    </div>
+    <%- include("./partials/scripts.ejs") %>
+  </body>
+</html>

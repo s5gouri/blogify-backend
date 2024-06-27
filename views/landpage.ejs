@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include("./partials/headers.ejs") %>
+    <title>Blogify - Discover and Share Ideas</title>
+    <style>
+      .hero-sectiona {
+        background: url("/for designing/landpage1.webp") no-repeat center
+          center/cover;
+        color: white;
+        text-align: center;
+        padding: 100px 20px;
+      }
+      .centre {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+      }
+      .hero-sectiona h1 {
+        margin: 0;
+        font-size: 3em;
+      }
+
+      .hero-sectiona p {
+        font-size: 1.5em;
+      }
+      .td {
+        text-decoration: none;
+      }
+      .btna {
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: white;
+        text-decoration: none;
+        border-radius: 5px;
+        font-size: 1.2em;
+      }
+
+      .about-sectiona {
+        text-align: center;
+        padding: 50px 20px;
+        background-color: #f4f4f4;
+      }
+
+      .about-sectiona h2 {
+        color: #333;
+      }
+
+      .about-sectiona p {
+        color: #666;
+        max-width: 600px;
+        margin: auto;
+      }
+
+      .site-footera {
+        background-color: #333;
+        color: white;
+        text-align: center;
+        padding: 20px 0;
+      }
+
+      .site-footera p {
+        margin: 0;
+      }
+
+      .navbar {
+        background-color: #7ed4d9;
+      }
+      .txt {
+        color: black;
+      }
+      .a1 {
+        padding-top: 60px;
+      }
+      .a2{
+        font-weight: 500;
+        color: black;
+      }
+    </style>
+  </head>
+  <body>
+    <%- include("./partials/navbar2.ejs") %>
+
+    <div class="container-fluid a1">
+      <header class="hero-sectiona">
+        <h1 class="txt">Welcome to Blogify!</h1>
+        <p class="fs-3" style="color: #ffffff">
+          Explore the world of blogs. Share your thoughts. Expand your horizon.
+          Join a vibrant community of writers and readers who are shaping the
+          future of publishing.
+        </p>
+        <a href="/user/signup" class="btna">Get started</a>
+      </header>
+      <div class="container-fluid mt-4">
+        <div class="row">
+          <div class="col-md-6 centre">
+            <p>
+              Blogify is a platform where thoughts are shared, ideas are born,
+              and connections are made. Dive into our diverse community and find
+              your space. Whether you're a seasoned writer or a casual reader,
+              there's something here for everyone.
+            </p>
+          </div>
+          <div class="col-md-6 centre">
+            <img
+              src="/for designing/landpage2.webp"
+              alt="Community Meeting"
+              class="img-fluid"
+              width="400px"
+              style="border-radius: 10px"
+            />
+          </div>
+        </div>
+      </div>
+      <div class="container-fluid centre mb-4">
+        <div class="col-md-6">
+          <img
+            src="/for designing/landpage3.webp"
+            alt="Writing Workshop"
+            class="img-fluid"
+            width="400px"
+            style="border-radius: 10px"
+          />
+        </div>
+        <div class="col-md-6">
+          <p>
+            Our platform empowers you to express yourself through writing,
+            sharing, and engaging with content in ways that traditional media
+            never allowed. From personal blogs to collaborative projects,
+            explore the countless opportunities to learn and grow with Blogify.
+          </p>
+        </div>
+      </div>
+    </div>
+    <footer class="site-footera">
+      <p>© 2024 Blogify. All rights reserved.</p>
+    </footer>
+    <%-include("./partials/scripts.ejs") %>
+  </body>
+</html>
