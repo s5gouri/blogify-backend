@@ -89,7 +89,7 @@ rt1.get("/logout", (req, res) => {
 });
 rt1.get("/view", check_for_user("token"), async (req, res) => {
   const user = req.user;
-  const blogs = await BLOG.find({ created_by: user._id });
+  const blogs = await BLOG.find({ created_by: user.id });
   res.render("userview", { user: req.user, blogs });
 });
 
