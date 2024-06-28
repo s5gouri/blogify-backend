@@ -59,7 +59,7 @@
         <div class="col-md-5 mb-3">
           <img
             src="<%= user.profile %>"
-            alt="unable to load...."
+            alt="img del. by server....."
             class="rounded-circle btn-outline-success"
             width="200px"
             height="250px"
@@ -84,7 +84,7 @@
           <div class="card" style="width: 18rem">
             <% if (blog.cover_img_url!=="nope") { %>
 
-            <img src="<%= blog.cover_img_url %>" class="card-img-top" />
+            <img src="<%= blog.cover_img_url %>" class="card-img-top" alt="img del. by server" />
             <% } %>
             <div class="card-body">
               <h5 class="card-title"><%= blog.title %></h5>
