@@ -4,7 +4,7 @@ require("dotenv").config();
 const { rt1 } = require("./routes/user_routes");
 const { connected } = require("./connection");
 const { rt2 } = require("./routes/blog_routes");
-connected(process.env.URL);
+connected(process.env.MONGO_URL);
 const PORT = process.env.PORT || 8000;
 
 //dependencies
