@@ -4,39 +4,39 @@ require("dotenv").config();
 const { rt1 } = require("./routes/user_routes");
 const { connected } = require("./connection");
 const { rt2 } = require("./routes/blog_routes");
-connected(process.env.MONGO_URL);
+connected(process.env.MONGO_URL || "mongodb://localhost:27017/blogify");
 const PORT = process.env.PORT || 8000;
 
-//cpu cores
-const os=require("os")
-console.log("cpu's-->",os.cpus().length)
-
 //dependencies
-
-const status = require("express-status-monitor");
+const cluster = require("cluster");
+const os = require("os");
+const cpus = os.cpus().length;
 const express = require("express");
 const cors = require("cors");
 const cookieParser = require("cookie-parser");
 const path = require("path");
-const app = express();
 
-app.use(status())
-app.use(cookieParser());
-app.use(express.urlencoded({ extended: false }));
-app.use(cors());
+//using cluster to reduce load on server
+if (cluster.isPrimary) {
+  for (let i = 0; i < cpus; i++) {
+    cluster.fork();
+  }
+} else {
+  const app = express();
+  app.use(cookieParser());
+  app.use(express.urlencoded({ extended: false }));
+  app.use(cors());
 
-app.set("view engine", "ejs");
-app.set("views", path.resolve("./views"));
-app.use(express.static(path.resolve("./public")));
+  app.set("view engine", "ejs");
+  app.set("views", path.resolve("./views"));
+  app.use(express.static(path.resolve("./public")));
+  app.get("/", async (req, res) => {
+    res.clearCookie("token").render("landpage");
+  });
 
-app.get("/", async (req, res) => {
-  res.clearCookie("token").render("landpage");
-});
-
-app.use("/user", rt1);
-app.use("/blog", rt2);
-app.listen(PORT, () => {
-  console.log(
-    "SERVER STARTED AT -> http://localhost:8000/ or  http://192.168.5.161:8000/ "
-  );
-});
+  app.use("/user", rt1);
+  app.use("/blog", rt2);
+  app.listen(PORT, () => {
+    console.log(`SERVER STARTED with cpu-->${process.pid}`);
+  });
+}
