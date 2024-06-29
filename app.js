@@ -9,12 +9,14 @@ const PORT = process.env.PORT || 8000;
 
 //dependencies
 
+const status = require("express-status-monitor");
 const express = require("express");
 const cors = require("cors");
 const cookieParser = require("cookie-parser");
 const path = require("path");
 const app = express();
 
+app.use(status())
 app.use(cookieParser());
 app.use(express.urlencoded({ extended: false }));
 app.use(cors());
