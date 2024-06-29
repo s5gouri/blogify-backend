@@ -7,6 +7,10 @@ const { rt2 } = require("./routes/blog_routes");
 connected(process.env.MONGO_URL);
 const PORT = process.env.PORT || 8000;
 
+//cpu cores
+const os=require("os")
+console.log("cpu's-->",os.cpus().length)
+
 //dependencies
 
 const status = require("express-status-monitor");
