@@ -17,11 +17,7 @@ const cookieParser = require("cookie-parser");
 const path = require("path");
 
 //using cluster to reduce load on server
-if (cluster.isPrimary) {
-  for (let i = 0; i < cpus; i++) {
-    cluster.fork();
-  }
-} else {
+
   const app = express();
   app.use(cookieParser());
   app.use(express.urlencoded({ extended: false }));
@@ -39,4 +35,3 @@ if (cluster.isPrimary) {
   app.listen(PORT, () => {
     console.log(`SERVER STARTED with cpu-->${process.pid}`);
   });
-}
